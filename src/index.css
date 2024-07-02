@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.about{
+    background-position-y: center;
+    background-position-x: left;
+}
+.contact-class, .featuredbg{
+    background-position-x: center;
+    background-position-y: center;
+}
+
+.scrollbar::-webkit-scrollbar {
+    /* width: 2px; Width of the scrollbar */
+    border-radius:20px;
+}
+
+.scrollbar::-webkit-scrollbar-track {
+    background: #000000; /* Color of the track */
+}
+
+.scrollbar::-webkit-scrollbar-thumb {
+    background-color: #ccc; /* Color of the scrollbar */
+    border-radius: 20px; /* Roundness of the scrollbar thumb */
+}
