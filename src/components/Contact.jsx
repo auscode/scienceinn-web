@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import emailjs from 'emailjs-com';
 
 export default function Contact() {
     const [buttonState, setButtonState] = useState('default');
@@ -7,38 +8,64 @@ export default function Contact() {
         event.preventDefault();
         setButtonState('loading');
 
-        setTimeout(() => {
+        const form = event.target;
+        const formData = new FormData(form);
+        const data = {
+            from_name: formData.get('name'),
+            email: formData.get('email'),
+            message: formData.get('message')
+        };
+
+
+        try {
+            await emailjs.send(
+                'service_scienceinn',
+                'template_yucxhgq',
+                data,
+                'q6PbrhQeTlY0bp9IT'
+            );
             setButtonState('success');
+            form.reset();
+        } catch (error) {
+            console.error('Failed to send message:', error);
+            setButtonState('default');
+        } finally {
             setTimeout(() => {
                 setButtonState('default');
             }, 2000);
-        }, 2000);
+        }
     };
 
     return (
-        <div className="contact flex flex-row justify-between items-center justify-center bg-black p-6 bg-contact contact-class" id="contact">
+        <div className="contact flex flex-row justify-between items-center justify-center bg-black py-24 px-6 bg-contact contact-class" id="contact">
             <h1 className="text-8xl font-bold ml-10 mb-0 text-white">Contact us</h1>
             <div className="bg-black border-2 p-8 rounded shadow-lg w-full max-w-lg">
                 <form className="flex flex-col text-white space-y-4" onSubmit={handleSubmit}>
                     <input
                         type="text"
+                        name="name"
                         placeholder="Your Name"
                         className="p-3 border border-gray-300 rounded bg-black focus:outline-none focus:border-white-500"
+                        required
                     />
                     <input
                         type="email"
+                        name="email"
                         placeholder="Your Email"
                         className="p-3 border border-gray-300 rounded bg-black focus:outline-none focus:border-white-500"
+                        required
                     />
                     <textarea
+                        name="message"
                         placeholder="Your Message"
                         className="p-3 border border-gray-300 rounded bg-black focus:outline-none focus:border-white-500 h-32"
+                        required
                     ></textarea>
                     <button
                         type="submit"
                         className={`p-3 rounded hover:bg-white transition duration-300 flex justify-center items-center ${
                             buttonState === 'loading' ? 'bg-gray-500 text-black' : 
-                            buttonState === 'success' ? 'bg-green-500 text-white' : 'bg-gray-500 text-black'
+                            buttonState === 'success' ? 'bg-gray-500 text-green-500' : 'bg-gray-500 text-black'
                         }`}
                     >
                         {buttonState === 'loading' && (
