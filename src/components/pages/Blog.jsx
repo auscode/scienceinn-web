@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-const Topmenu = React.lazy(() => import('../Topmenu'));
-const Footer = React.lazy(() => import('../Footer'));
+
 
 export default function Blog() {
     const [blogs, setBlogs] = useState([]);
@@ -55,6 +54,9 @@ export default function Blog() {
             <div >
                 <div className='bg-black text-white p-4 h-[100%]'>
                     <div className='text-4xl font-bold text-center p-20 pb-10'>ScienceInn Blogs</div>
+                    <div>
+                        
+                    </div>
                     <div>
                         {error ? (
                             <div className='w-full text-center'>Error: {error}</div>
