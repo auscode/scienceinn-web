@@ -16,7 +16,6 @@ export default function Contact() {
             message: formData.get('message')
         };
 
-
         try {
             await emailjs.send(
                 'service_scienceinn',
@@ -37,8 +36,8 @@ export default function Contact() {
     };
 
     return (
-        <div className="contact flex flex-row justify-between items-center justify-center bg-black py-24 px-6 bg-contact contact-class" id="contact">
-            <h1 className="text-8xl font-bold ml-10 mb-0 text-white">Contact us</h1>
+        <div className="contact flex flex-col lg:flex-row justify-between items-center bg-black py-24 px-6 bg-contact contact-class" id="contact">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-bold mb-10 lg:mb-0 text-white lg:ml-10">Contact us</h1>
             <div className="bg-black border-2 p-8 rounded shadow-lg w-full max-w-lg">
                 <form className="flex flex-col text-white space-y-4" onSubmit={handleSubmit}>
                     <input
