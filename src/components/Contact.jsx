@@ -18,10 +18,10 @@ export default function Contact() {
 
         try {
             await emailjs.send(
-                'service_scienceinn',
-                'template_yucxhgq',
+                import.meta.env.VITE_SERVICE_ID,
+                import.meta.env.VITE_TEMPLATE_ID,
                 data,
-                'q6PbrhQeTlY0bp9IT'
+                import.meta.env.VITE_USER_ID,
             );
             setButtonState('success');
             form.reset();
