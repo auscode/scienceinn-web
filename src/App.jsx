@@ -15,7 +15,7 @@ const Footer = React.lazy(() => import('./components/Footer'));
 function App() {
   return (
     <Router>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<div>Loading... Thand rakh bhai ho rhi hai load</div>}>
         <div className='flex flex-col'>
           <Topmenu/>
           <Routes>
