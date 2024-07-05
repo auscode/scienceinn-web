@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { Analytics } from "@vercel/analytics/react"
 import Homepage from './components/Homepage';
 import Blog from './components/pages/Blog';
 import Gallery from './components/pages/Gallery';
@@ -13,7 +14,7 @@ const Topmenu = React.lazy(() => import('./components/Topmenu'));
 const Footer = React.lazy(() => import('./components/Footer'));
 
 function App() {
-  return (
+  return (<>
     <Router>
       <Suspense fallback={<div>Loading... Thand rakh bhai ho rhi hai load</div>}>
         <div className='flex flex-col'>
@@ -30,6 +31,8 @@ function App() {
         </div>
       </Suspense>
     </Router>
+    <Analytics/>
+    </>
   );
 }
 
